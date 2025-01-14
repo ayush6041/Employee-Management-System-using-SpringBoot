@@ -1,4 +1,4 @@
 package com.employeeManagementSystem.EmployeeManagementSystem.service;
 
-public class CustomUserDetailService {
+public class CustomUserDetailsService {
 }
