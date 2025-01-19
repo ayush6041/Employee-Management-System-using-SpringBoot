@@ -13,7 +13,7 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public void saveAdmin(Admin admin){
-        if (adminRepository.existByUsername(admin.getUsername())){
+        if (adminRepository.existsByUsername(admin.getUsername())){
             throw  new RequestRejectedException("Admin Already Exists");
         }
         this.adminRepository.save(admin);

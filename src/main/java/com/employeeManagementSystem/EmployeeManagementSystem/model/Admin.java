@@ -15,6 +15,12 @@ public class Admin {
     @Column(nullable = false, name = "password")
     private String password;
 
+    public Admin(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+
     //getters and setters
 
 
