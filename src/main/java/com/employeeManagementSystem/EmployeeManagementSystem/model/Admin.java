@@ -20,6 +20,11 @@ public class Admin {
         this.password = password;
     }
 
+    //Default Constructor
+
+    public Admin() {
+    }
+
 
     //getters and setters
 

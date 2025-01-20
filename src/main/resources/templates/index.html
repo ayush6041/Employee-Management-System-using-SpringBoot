@@ -1,10 +1,291 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Index</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page | EMS</title>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /*NAVBAR*/
+        /* Navbar Container */
+.navbar {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Distribute space evenly */
+    background-color: #f8f9fa; /* Optional background color */
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+}
+
+/* Employee List Title */
+.navbar h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+/* Logout Button */
+.logout-button {
+    background: none; /* Remove button background */
+    border: none; /* Remove border */
+    color: #007bff; /* Link color */
+    font-size: 1rem;
+    text-decoration: underline; /* Underline to look like a link */
+    cursor: pointer;
+    padding: 0;
+}
+
+.logout-button:hover {
+    color: #0056b3; /* Darker blue on hover */
+    text-decoration: none; /* Remove underline on hover */
+}
+
+/* Add Employee Link */
+.navbar a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 1rem;
+    margin-left: 10px;
+}
+
+.navbar a:hover {
+    color: #0056b3;
+}
+
+/* Search Bar Container */
+/* Navbar Container */
+.navbar {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Distribute space evenly */
+    background-color: #34495e; /* Professional dark blue-gray */
+    color: #fff; /* White text for better contrast */
+    padding: 10px 20px;
+    border: 1px solid #2c3e50; /* Slightly darker border */
+    border-radius: 5px; /* Rounded corners for a cleaner look */
+}
+
+/* Employee List Title */
+.navbar h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #ecf0f1; /* Light gray color for the title */
+}
+
+/* Logout Button */
+.logout-button {
+    background: none; /* Remove button background */
+    border: none; /* Remove border */
+    color: #ecf0f1; /* Light gray color */
+    font-size: 1rem;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+}
+
+.logout-button:hover {
+    color: #bdc3c7; /* Subtle hover effect */
+    text-decoration: none;
+}
+
+/* Add Employee Link */
+.navbar a {
+    text-decoration: none;
+    color: #ecf0f1;
+    font-size: 1rem;
+    margin-left: 10px;
+}
+
+.navbar a:hover {
+    color: #bdc3c7;
+}
+
+/* Search Bar Container */
+.search-container {
+    position: relative; /* Relative positioning for icon and button */
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Add spacing between elements */
+}
+
+/* Search Input Field */
+.search-bar {
+    padding: 5px 10px;
+    font-size: 1rem;
+    border: 1px solid #bdc3c7; /* Subtle border color */
+    border-radius: 4px;
+    padding-right: 30px; /* Add space for the icon */
+    outline: none;
+}
+
+/* Search Icon */
+.search-icon {
+    position: absolute;
+    right: 50px; /* Adjust based on button position */
+    font-size: 1rem;
+    color: #bdc3c7;
+    pointer-events: none;
+}
+
+/* Search Button */
+.search-button {
+    background-color: #2ecc71; /* Light green button */
+    color: #fff; /* White text */
+    border: none;
+    padding: 5px 15px;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: #27ae60; /* Darker green on hover */
+}
+
+
+
+        /* Table Container for Scroll */
+        .table-container {
+            max-width: 100%;
+            overflow-x: auto; /* Enable horizontal scrolling */
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 1000px; /* Ensures consistent width for many columns */
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: #fff;
+            position: sticky; /* Keeps headers visible during scroll */
+            top: 0;
+            z-index: 2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #eaf4ff;
+        }
+
+        td {
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            table {
+                min-width: 600px; /* Adjust width for smaller devices */
+            }
+
+            td, th {
+                font-size: 14px; /* Reduce font size for smaller screens */
+                padding: 10px;
+            }
+
+            .actions a {
+                font-size: 13px;
+            }
+        }
+
+        /* Action Links Styling */
+        .actions a {
+            margin: 0 5px;
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+        }
+
+        .actions a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
+<h1>Employee Management System</h1>
+<div class="navbar">
+    <h1>Employee List</h1>
+    <form action="/logout" method="post" th:action="@{logout}">
+        <button type="submit" class="logout-button">Logout</button>
+    </form>
+    <a th:href="@{showNewEmployeeForm}">Add Employee</a>
+    <div class="search-container">
+        <input type="text" placeholder="Search... 🔍" class="search-bar" />
+        <span class="search-icon"></span>
+        <button type="button" class="search-button">Search</button>
+    </div>
+</div>
 
+
+
+<div class="table-container">
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Gender</th>
+            <th>Date Of Birth</th>
+            <th>Designation</th>
+            <th>Service Line</th>
+            <th>Performance</th>
+            <th> Address</th>
+            <th>Joining Date</th>
+            <th>Salary</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="employee: ${listEmployees}">
+            <td th:text="${employee.id}"></td>
+            <td th:text="${employee.first_name}"></td>
+            <td th:text="${employee.last_name}"></td>
+            <td th:text="${employee.email}"></td>
+            <td th:text="${employee.Phone_no}"></td>
+            <td th:text="${employee.Gender}"></td>
+            <td th:text="${employee.dateOfBirth}"></td>
+            <td th:text="${employee.Designation}"></td>
+            <td th:text="${employee.department}"></td>
+            <td th:text="${employee.performance}"></td>
+            <td th:text="${employee.Address}"></td>
+            <td th:text="${employee.joining_Date}"></td>
+            <td th:text="${employee.salary}"></td>
+
+            <td class="actions">
+                <a th:href="@{/showFormForUpdate/{id}(id=$employee.id)})}">Edit</a> | <a href="@{/deleteEmployee/{id}(id=${employee.id})}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
