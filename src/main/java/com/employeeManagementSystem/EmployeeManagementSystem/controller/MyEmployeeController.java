@@ -105,9 +105,6 @@ public class MyEmployeeController {
         authenticatedEmployee.setFirst_name(employee.getFirst_name());
         authenticatedEmployee.setLast_name((employee.getLast_name()));
         authenticatedEmployee.setPassword(employee.getPassword());
-
-
-
         employeeService.saveEmployee(authenticatedEmployee);
         return "redirect:/employee/dashboard";
     }
