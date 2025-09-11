@@ -23,7 +23,6 @@ public class AdminController {
     public  String loginForm(){
         return "login";
     }
-
     @GetMapping("/registerAdmin")
     public String showRegistrationForm(Model model){
         return "admin_register";

@@ -61,14 +61,14 @@ public class MyEmployeeController {
     }
 
     //Show the registration form for employee
-    @GetMapping("/register")
+    @GetMapping("/registerEmployee")
     public String showRegistrationForm(Model model){
         model.addAttribute("employee", new Employee());
          return "employee_register";
     }
 
     // Handle  the registration form submission for employee
-    @PostMapping("/register")
+    @PostMapping("/registerEmployee")
     public  String registerEmployee(@ModelAttribute("employee") Employee employee, Model model){
         employee.setPassword(passwordEncoder.encode(employee.getPassword()));
 
