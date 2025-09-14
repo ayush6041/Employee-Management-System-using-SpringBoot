@@ -45,7 +45,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login", "/forgotPassword", "/registerAdmin", "/employee/register")
+                        .requestMatchers("/home","/login", "/forgotPassword", "/registerAdmin", "/employee/register")
                         .permitAll() // Public endpoints
                         .requestMatchers("/employee/**").hasRole("EMPLOYEE") // Employee pages
                         .requestMatchers("/admin/**").hasRole("ADMIN") // Admin pages
